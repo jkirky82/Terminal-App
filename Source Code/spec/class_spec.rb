@@ -1,12 +1,14 @@
-require '../main.rb'
+require_relative '../main.rb'
 
 
 
-describe "character age" do 
-  it "The character age is a number" do
-  expect(age_validator(10)).to be(10)
+describe "character customise" do 
+  character = Character.new('Jack', 18)
+  it "Input the characters name" do
+    expect(character.name).to eq('Jack')
   end
-  it "If user inputs not a number" do
-    expect{age_validator('4')}.to raise_error(NotANumber) 
-   end
+
+  it "Input the characters age" do
+    expect(character.age).to be(18)
+  end
 end
