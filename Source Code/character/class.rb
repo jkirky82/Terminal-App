@@ -1,25 +1,29 @@
-require_relative 'abilites.rb'
+require_relative 'ability.rb'
 require "tty-prompt"
 
 #User selects what class they would like.
 class Classes
-  @@prompt = TTY::Prompt.new
+  attr_reader :chosen_list, :class
+    
   #When class is called will prompt the user to select what class they would like.
   def initialize
     puts "what class would you like to be"
     case @@prompt.select("Choose your Class?", %w(Water Fire Earth))
     #Depending on the selection it will then send to the respected function 
     when 'Water'
-      abilitie = water
+      ability = water
+      @class = 'Water'
     when'Fire' 
-      abilitie = fire
+      ability = fire
+      @class = 'Fire'
     when 'Earth'
-      abilitie = earth
+      ability = earth
+      @class = 'Earth'
     end
-    #Sends the abilite list to another class and returns an array with a hash inside with the abilitie name, damage, and type
-    abilitie_class = Abilities.new
-    chosen_list = abilitie_class.abilities(abilitie)
-    return chosen_list
+
+    #Sends the abilite list to another class and returns an array with a hash inside with the ability name, damage, and type
+    ability_class = Ability.new
+    @chosen_list = ability_class.ability(ability)
   end
 
   #Functions depending on what class user would like to be.

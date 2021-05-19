@@ -1,12 +1,24 @@
-require_relative 'class.rb'
+require_relative 'character/class.rb'
+require_relative 'character/weapon.rb'
 class Character 
-  attr_reader :name, :age
+  attr_reader :name, :age 
+  attr_accessor :classes, :weapon
+
   def initialize
     @name = name_validator
     @age = age_validator
+    class_ability = Classes.new
+    @abilitys = class_ability.chosen_list
+     
+    @class = class_ability.class
+    @weapon = weapon
+  end
 
-    tes = Classes.new 
-    p tes.to_s
+  def weapon
+    if @class == 'Water'
+      weapon = Weapon.new
+      @weapon = weapon.water_weapons
+    end
   end
   #Check to see if name has no numbers 
   def name_validator
