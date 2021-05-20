@@ -4,6 +4,7 @@ require "tty-prompt"
 #User selects what class they would like.
 class Classes
   attr_reader :chosen_list, :class
+  @@prompt = TTY::Prompt.new
     
   #When class is called will prompt the user to select what class they would like.
   def initialize

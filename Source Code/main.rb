@@ -1,23 +1,26 @@
 require_relative 'character/class.rb'
 require_relative 'character/weapon.rb'
+require_relative 'combat.rb'
+
 class Character 
   attr_reader :name, :age 
-  attr_accessor :classes, :weapon
+  attr_accessor :classes, :weapon, :health_points
 
   def initialize
     @name = name_validator
     @age = age_validator
     class_ability = Classes.new
     @abilitys = class_ability.chosen_list
-     
     @class = class_ability.class
-    @weapon = weapon
+    @weapon = chose_weapon
+    @health_points = 20
+  
   end
 
-  def weapon
+  def chose_weapon
     if @class == 'Water'
-      weapon = Weapon.new
-      @weapon = weapon.water_weapons
+      chosen_weapon = Weapon.new
+      return chosen_weapon.water_weapons
     end
   end
   #Check to see if name has no numbers 
@@ -46,10 +49,8 @@ class Character
     end
     return age
   end
+  Combat.new
 end
 
-
 puts "Welcome to my game"
-
-player_one = Character.new
-
+Character.new
