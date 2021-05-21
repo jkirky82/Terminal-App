@@ -1,6 +1,7 @@
 require_relative 'character/class.rb'
 require_relative 'character/weapon.rb'
 require_relative 'combat.rb'
+require_relative 'path.rb'
 
 class Character 
   attr_reader :name, :age 
@@ -58,9 +59,14 @@ end
 
 puts "Welcome to my game"
 player = Character.new
-
+path = path.new
 i = 1
 while i < 6
   Combat.new(player, i)
-  #add in path choice
+  path_choice = path.three_path
+  if path_choice == 'combat'
+  else
+    #treasure
+  end
+  i += 1
 end
