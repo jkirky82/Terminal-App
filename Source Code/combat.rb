@@ -27,7 +27,7 @@ class Combat
     if rand(1..20) + 2 <= @enemy.enemy_armor_score 
       puts "hit"
       @enemy.enemy_health_points -= @player.weapon[:dmg]
-      return if enemy_life
+      return if enemy_life == true
     else
       puts "Missed"
     end
@@ -46,7 +46,7 @@ class Combat
     @player.abilitys.each do |spells| 
       if spells[:title] == chosen_spell
         @enemy.enemy_health_points -= spells[:dmg]
-        enemy_life
+        return if enemy_life == true
       end
     end
     enemy_turn
@@ -59,12 +59,13 @@ class Combat
   def enemy_life
     if @enemy.enemy_health_points <= 0 
       puts "You won the fight"
-      return
+      return true
     end
   end
 
   #enemy turn attack 
   def enemy_turn
+    puts "enemy attack"
     if rand(1..20) + 2 <= 16 #player armor class
     end
     if @player.health_points == 0
