@@ -27,10 +27,11 @@ class Combat
     if rand(1..20) + 2 <= @enemy.enemy_armor_score 
       puts "hit"
       @enemy.enemy_health_points -= @player.weapon[:dmg]
+      return if enemy_life
     else
       puts "Missed"
-      enemy_turn
     end
+    enemy_turn
   end
 
   #players spells 
@@ -48,6 +49,7 @@ class Combat
         enemy_life
       end
     end
+    enemy_turn
   end
 
   #players potion options 

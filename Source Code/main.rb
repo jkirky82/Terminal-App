@@ -59,11 +59,12 @@ end
 
 puts "Welcome to my game"
 player = Character.new
-path = path.new
+path = Path.new
 i = 1
 while i < 6
   Combat.new(player, i)
   path_choice = path.three_path
+  puts path_choice
   if path_choice == 'combat'
   else
     #treasure
