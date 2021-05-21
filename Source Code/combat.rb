@@ -1,11 +1,11 @@
 require_relative 'enemy.rb'
 require "tty-prompt"
 
-class Combat
+class Combat 
   @@prompt = TTY::Prompt.new
 
-  def initialize
-    @player = Character.new
+  def initialize(tes)
+    @player = tes
     @enemy = Enemy.new
     rounds
   end
@@ -28,27 +28,38 @@ class Combat
     if rand(1..20) + 2 <= @enemy.enemy_armor_score 
       puts "hit"
       @enemy.enemy_health_points -= @player.weapon[:dmg]
-      puts @enemy.enemy_health_points
     else
       puts "Missed"
       enemy_turn
-    end
-
-    if @enemy.enemy_health_points <= 0 
-      puts "You won the fight"
-      return
     end
   end
 
   #players spells 
   def spells 
-    @player.abilitys.each do |d| puts d[:title] end
-  
-    # @@prompt.select("What will it be", @player.abilitys.each do |d| d[:title] end, max: 1)
+    #Loops through chosen skills and displays them as a pickable option
+    chosen_spell = @@prompt.select("What will it be", max: 1) do |menu|
+      @player.abilitys.each do |spells| 
+        menu.choice spells[:title]
+      end
+    end
+    #loops through and checks chosen answer and uses the dmg part of the array to deal damage to enemy
+    @player.abilitys.each do |spells| 
+      if spells[:title] == chosen_spell
+        @enemy.enemy_health_points -= spells[:dmg]
+        enemy_life
+      end
+    end
   end
 
   #players potion options 
   def potion 
+  end
+
+  def enemy_life
+    if @enemy.enemy_health_points <= 0 
+      puts "You won the fight"
+      return
+    end
   end
 
   #enemy turn attack 

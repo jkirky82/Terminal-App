@@ -14,15 +14,19 @@ class Character
     @class = class_ability.class
     @weapon = chose_weapon
     @health_points = 20
-  
+    #start_game
   end
 
+  # def start_game
+  #   Combat.new
+  # end
   def chose_weapon
     if @class == 'Water'
       chosen_weapon = Weapon.new
       return chosen_weapon.water_weapons
     end
   end
+
   #Check to see if name has no numbers 
   def name_validator
     puts "Whats your characters name"
@@ -49,8 +53,8 @@ class Character
     end
     return age
   end
-  Combat.new
+  
 end
-
 puts "Welcome to my game"
-Character.new
+player = Character.new
+Combat.new(player)
