@@ -4,7 +4,7 @@ require_relative 'combat.rb'
 
 class Character 
   attr_reader :name, :age 
-  attr_accessor :classes, :weapon, :health_points
+  attr_accessor :classes, :weapon, :health_points, :abilitys
 
   def initialize
     @name = name_validator

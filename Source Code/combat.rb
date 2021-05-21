@@ -16,7 +16,7 @@ class Combat
       when 'Attack'
         attack
       when 'Spells'
-        
+        spells
       when 'Potion'
        
       end
@@ -42,6 +42,9 @@ class Combat
 
   #players spells 
   def spells 
+    @player.abilitys.each do |d| puts d[:title] end
+  
+    # @@prompt.select("What will it be", @player.abilitys.each do |d| d[:title] end, max: 1)
   end
 
   #players potion options 
