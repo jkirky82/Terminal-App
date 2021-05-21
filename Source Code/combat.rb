@@ -4,7 +4,7 @@ require "tty-prompt"
 class Combat 
   @@prompt = TTY::Prompt.new
 
-  def initialize(tes)
+  def initialize(tes, level)
     @player = tes
     @enemy = Enemy.new
     rounds
@@ -18,7 +18,6 @@ class Combat
       when 'Spells'
         spells
       when 'Potion'
-       
       end
     end
   end

@@ -55,6 +55,12 @@ class Character
   end
   
 end
+
 puts "Welcome to my game"
 player = Character.new
-Combat.new(player)
+
+i = 1
+while i < 6
+  Combat.new(player, i)
+  #add in path choice
+end
