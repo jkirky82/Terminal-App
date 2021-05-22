@@ -2,6 +2,7 @@ require_relative 'character/class.rb'
 require_relative 'character/weapon.rb'
 require_relative 'combat.rb'
 require_relative 'path.rb'
+require_relative 'treasure.rb'
 
 class Character 
   attr_reader :name, :age 
@@ -19,7 +20,7 @@ class Character
   end
 
   def character
-    puts `clear`
+    system("clear")
     puts "You are #{@name}, aged #{@age} from the #{@class} tribe, rocking the #{@weapon[:name]}"
     sleep(5)
   end
@@ -69,7 +70,7 @@ while i < 6
   puts path_choice
   if path_choice == 'combat'
   else
-    #treasure
+    path.treasure
   end
   i += 1
 end
