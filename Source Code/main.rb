@@ -71,3 +71,4 @@ while i < 6
   end
   i += 1
 end
+puts "Game over you won"
