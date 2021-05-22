@@ -5,8 +5,12 @@ class Combat
   @@prompt = TTY::Prompt.new
 
   def initialize(tes, level)
+    puts `clear` #clears the terminal
+    puts "whats that sounds"
+    sleep(2)
     @player = tes
-    @enemy = Enemy.new
+    @enemy = Enemy.new(1)
+    puts "An angry looking #{@enemy.enemy_type} approach" #change text size 
     rounds
   end
 
@@ -25,10 +29,12 @@ class Combat
   #players attack with weapon
   def attack
     if rand(1..20) + 2 <= @enemy.enemy_armor_score 
+      sleep(3)
       puts "hit"
       @enemy.enemy_health_points -= @player.weapon[:dmg]
       return if enemy_life == true
     else
+      sleep(3)
       puts "Missed"
     end
     enemy_turn
@@ -65,8 +71,9 @@ class Combat
 
   #enemy turn attack 
   def enemy_turn
-    puts "enemy attack"
+    puts "The #{@enemy.enemy_type} goes for an attack"
     if rand(1..20) + 2 <= 16 #player armor class
+      sleep(3)
     end
     if @player.health_points == 0
       puts "you died game over"

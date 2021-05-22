@@ -15,12 +15,14 @@ class Character
     @class = class_ability.class
     @weapon = chose_weapon
     @health_points = 20
-    #start_game
+    character
   end
 
-  # def start_game
-  #   Combat.new
-  # end
+  def character
+    puts `clear`
+    puts "You are #{@name}, aged #{@age} from the #{@class} tribe, rocking the #{@weapon[:name]}"
+    sleep(5)
+  end
   def chose_weapon
     if @class == 'Water'
       chosen_weapon = Weapon.new

@@ -9,6 +9,10 @@ gem 'pry'
 
 gem 'pry-byebug'
 gem "tty-prompt"
-gem "tty-prompt"
 gem 'pry-nav'
 gem 'respec'
+gem 'asciiart', '~> 0.0.9'
+gem 'rmagick', '~> 2.13.4'
+gem 'rainbow', '~> 2.0'
+
+
