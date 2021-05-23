@@ -18,7 +18,7 @@ class Combat
   end
 
   def rounds
-    while @enemy.enemy_health_points >= 0 
+    while @enemy.enemy_health_points > 0 
       puts ""
       case @@prompt.select("Your move, What will it be", %w(Attack Spells Potion), max: 1)
       when 'Attack'
@@ -74,6 +74,7 @@ class Combat
   end
 
   def enemy_life
+    puts @enemy.enemy_health_points
     if @enemy.enemy_health_points <= 0 
       puts "You won the fight"
       return true

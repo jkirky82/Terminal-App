@@ -2,7 +2,6 @@ require_relative 'character/class.rb'
 require_relative 'character/weapon.rb'
 require_relative 'combat.rb'
 require_relative 'path.rb'
-require_relative 'treasure.rb'
 
 class Character 
   attr_reader :name, :age 
@@ -70,7 +69,7 @@ while i < 6
   puts path_choice
   if path_choice == 'combat'
   else
-    path.treasure
+    path.treasure(player)
   end
   i += 1
 end
