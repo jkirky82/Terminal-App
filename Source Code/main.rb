@@ -14,7 +14,7 @@ class Character
     @abilitys = class_ability.chosen_list
     @class = class_ability.class
     @weapon = chose_weapon
-    @health_points = 20
+    @health_points = 200
     character
   end
 

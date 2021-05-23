@@ -18,6 +18,8 @@ class Combat
   end
 
   def rounds
+    drawing
+    do_health(@enemy.enemy_max_health,@enemy.enemy_health_points)
     while @enemy.enemy_health_points > 0 
       puts ""
       case @@prompt.select("Your move, What will it be", %w(Attack Spells Potion), max: 1)
@@ -90,5 +92,56 @@ class Combat
       puts "you died game over"
       exit!
     end  
+  end
+
+  def do_health(maxHealth,health)
+    health = health.to_f
+    maxHealth = maxHealth.to_f
+    if health < 0 
+      health = 0
+    end
+    healthDashes = 40 # Max Displayed dashes
+    dashConvert = (maxHealth/healthDashes)            # Get the number to divide by to convert health to dashes (being 10)
+    currentDashes = (health/dashConvert)              # Convert health to dash count: 80/10 => 8 dashes
+    remainingHealth = healthDashes - currentDashes       # Get the health remaining to fill as space => 12 spaces
+
+    healthDisplay = '-' * currentDashes                  # Convert 8 to 8 dashes as a string:   "--------"
+    remainingDisplay = ' ' * remainingHealth             # Convert 12 to 12 spaces as a string: "            "
+    percent = ((health/maxHealth)*100)      # Get the percent as a whole number:   40%
+
+    puts ""
+    puts("          |" + healthDisplay + remainingDisplay + "|")  # Print out textbased healthbar
+    puts "                          #{percent}%"    
+  end    
+
+  def drawing
+    puts "
+                                        ,--,  ,.-.
+               ,                   \\,       '-,-`,'-.' | ._
+              /|           \\    ,   |\\        }  )/  / `-,',
+              [ ,          |\  /|   | |        /  \\|  |/`  ,`
+              | |       ,.`  `,` `, | |  _,...(   (      .',
+              \\  \\  __ ,-` `  ,  , `/ |,'      Y     (   /_L\
+
+               \\  \\_\\,``,   ` , ,  /  |         )         _,/
+                \\  '  `  ,_ _`_,-,<._.<        /         /
+                 ', `>.,`  `  `   ,., |_      |         /
+                 \\/`  `,   `   ,`  | /__,.-`    _,   `\
+
+               -,-..\\  _  \\  `  /  ,  / `._) _,-\\`       \
+
+                \_,,.) /\\    ` /  / ) (-,, ``    ,        |
+               ,` )  | \\_\\       '-`  |  `(               \
+               
+              /  /```(   , --, ,' \\   |`<`    ,            |
+             /  /_,--`\\   <\  V /> ,` )<_/)  | \\      _____)
+       ,-, ,`   `   (_,\\ \\    |   /) / __/  /   `----`
+      (-, \\           ) \\ ('_.-._)/ /,`    /
+      | /  `          `/ \\\\ V   V, /`     /
+   ,--\\(        ,     <_/`\\\\     ||      /
+  (   ,``-     \\/|         \\-A.A-`|     /
+ ,>,_ )_,..(    )\\          -,,_-`  _--`
+(_ \\|`   _,/_  /  \\_            ,--`
+ \\( `   <.,../`     `-.._   _,-`"
   end
 end

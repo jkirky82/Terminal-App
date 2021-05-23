@@ -7,7 +7,7 @@ class Weapon
     puts 'Choose your weapon'
     choices = %w(Bow Spear)
     answer = @@prompt.select("What will it be", choices)
-    @weapon = {:name => answer, :dmg => 3}
+    @weapon = {:name => answer, :dmg => 30}
   end
 
   def fire_weapons
