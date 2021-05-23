@@ -29,6 +29,7 @@ class Combat
         spells
       when 'Potion'
       end
+      do_health(@enemy.enemy_max_health,@enemy.enemy_health_points)
     end
   end
 

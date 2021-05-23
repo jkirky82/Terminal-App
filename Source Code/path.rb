@@ -29,7 +29,7 @@ class Path
 
     def restor_pp(player)
         puts "You find a weird berry, you eat it something odd happens"
-        chosen_spell = @@prompt.select("Select spell that youd like to restor energy too", max: 1) do |menu|
+        chosen_spell = @@prompt.select("Select spell that youd like to restor energy too") do |menu|
             player.abilitys.each do |spells| 
               menu.choice spells[:title]
             end
@@ -45,6 +45,11 @@ class Path
     end
 
     def special_item(player)
-        puts "A secret path has been found "
+        puts "A secret path has been found"
+        puts "After walking down the path for a while you hear a loud thumping sounds"
+        case @@prompt.select("Do you continue on?", %w(Yes No)) 
+        when 'Yes'
+        when 'No'
+        end
     end
 end
