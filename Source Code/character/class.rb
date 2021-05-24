@@ -12,7 +12,7 @@ class Classes
     case @@prompt.select("Choose your Class?", %w(Water Fire Earth))
     #Depending on the selection it will then send to the respected function 
     when 'Water'
-      ability = water
+      ability = water #Shows the user a list of water abilites they can select from 
       @class = 'Water'
     when'Fire' 
       ability = fire

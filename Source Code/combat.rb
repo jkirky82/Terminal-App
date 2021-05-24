@@ -18,11 +18,15 @@ class Combat
     rounds
   end
 
+  #Loops through combat untill someone has no health left
   def rounds
-    monster_health
+    monster_health          #Displays a health bar and a image of the monster
     while @enemy.enemy_health_points > 0 
+      puts "\n\n"
+      puts "Your health".center(63)  
+      do_health(@player.max_health_points,@player.health_points)
       puts ""
-      case @@prompt.select("Your move, What will it be", %w(Attack Spells Potion), max: 1)
+      case @@prompt.select("Your move, What will it be", %w(Attack Spells Potion), max: 1)    #User selects how they want to attack
       when 'Attack'
         attack
       when 'Spells'
@@ -42,7 +46,7 @@ class Combat
       @enemy.enemy_health_points -= @player.weapon[:dmg]
       monster_health
       puts ""
-      puts "\You Smach the monster"
+      puts "You Smach the monster"
       sleep(2)
       return if enemy_life == true
     else
@@ -75,6 +79,7 @@ class Combat
             puts "You build up energy and realese it"
             sleep (2)
             @enemy.enemy_health_points -= spells[:dmg]
+            monster_health
             spells[:pp] -= 1
             spell_pp = true
             return if enemy_life == true
@@ -101,39 +106,41 @@ class Combat
 
   #enemy turn attack 
   def enemy_turn
-    if rand(1..20) + 2 <= 16 #player armor class
+    if rand(1..20) + 2 <= 16  #player armor class       #random number between 1-20 and if its 16 or higher the attack hits 
       puts "You can't get out of the way fast enoguh"   
-      @player.health_points -= @enemy.enemy_attack 
+      @player.health_points -= @enemy.enemy_attack      #Players health minus the enemys damage 
     else
       puts "You just dodge the atttack"
     end
     sleep(3)
-    if @player.health_points == 0
+    if @player.health_points <= 0  # If the players health is less then 0 end the game ends and you lose
       puts "you died game over"
-      exit!
+      exit! #exits the program
     end  
   end
 
+  #creates a health bar with the maxhp and current health
   def do_health(maxHealth,health)
     health = health.to_f
     maxHealth = maxHealth.to_f
-    if health < 0 
+
+    if health < 0 #if the current health is less then 0 it makes it zero so no errors occur
       health = 0
     end
     healthDashes = 40 # Max Displayed dashes
-    dashConvert = (maxHealth/healthDashes)            # Get the number to divide by to convert health to dashes (being 10)
-    currentDashes = (health/dashConvert)              # Convert health to dash count: 80/10 => 8 dashes
-    remainingHealth = healthDashes - currentDashes       # Get the health remaining to fill as space => 12 spaces
+    dashConvert = (maxHealth/healthDashes)            # Get the number to divide by to convert health to dashes 
+    currentDashes = (health/dashConvert)              # Convert health to dash count
+    remainingHealth = healthDashes - currentDashes       # Get the health remaining to fill as space 
 
     healthDisplay = '-' * currentDashes                  # Convert 8 to 8 dashes as a string:   "--------"
     remainingDisplay = ' ' * remainingHealth             # Convert 12 to 12 spaces as a string: "            "
     percent = ((health/maxHealth)*100)      # Get the percent as a whole number:   40%
-
     puts ""
     puts("          |" + healthDisplay + remainingDisplay + "|")  # Print out textbased healthbar
     puts "                            #{percent}%"    
   end  
   
+  #puts the healthbar and enemy image
   def monster_health
     do_health(@enemy.enemy_max_health,@enemy.enemy_health_points)
     puts enemy_fight 

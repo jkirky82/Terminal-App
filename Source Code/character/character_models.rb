@@ -1,3 +1,5 @@
+#These are used for display images
+
 def troll
   troll = <<-'EOF'
            _......._
