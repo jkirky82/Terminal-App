@@ -9,15 +9,15 @@ class Classes
   #When class is called will prompt the user to select what class they would like.
   def initialize
     puts "what class would you like to be"
-    case @@prompt.select("Choose your Class?", %w(Water Fire Earth))
+    case @@prompt.select("Choose your Class?", "Water".colorize(:blue), "Fire".colorize(:red), "Earth".colorize(:green))
     #Depending on the selection it will then send to the respected function 
-    when 'Water'
+    when 'Water'.colorize(:blue)
       ability = water #Shows the user a list of water abilites they can select from 
       @class = 'Water'
-    when'Fire' 
+    when'Fire'.colorize(:red)
       ability = fire
       @class = 'Fire'
-    when 'Earth'
+    when 'Earth'.colorize(:green)
       ability = earth
       @class = 'Earth'
     end

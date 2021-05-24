@@ -8,23 +8,18 @@ class Combat
   def initialize(tes, level)
     #Some text before combat
     system ("clear") #clears the terminal
-    puts "whats that sounds"
-    sleep(1)
-    system ("clear")
-
     @player = tes
     @enemy = Enemy.new(1)
-    puts "An angry looking #{@enemy.enemy_type} approach" #change text size 
+    puts "An angry looking #{@enemy.enemy_type} approach".center(150) #change text size 
     rounds
   end
 
   #Loops through combat untill someone has no health left
-  def rounds
-    monster_health          #Displays a health bar and a image of the monster
+  def rounds          #Displays a health bar and a image of the monster
     while @enemy.enemy_health_points > 0 
       puts "\n\n"
-      puts "Your health".center(63)  
-      do_health(@player.max_health_points,@player.health_points)
+      system("clear")
+      monster_health
       puts ""
       case @@prompt.select("Your move, What will it be", %w(Attack Spells Potion), max: 1)    #User selects how they want to attack
       when 'Attack'
@@ -54,8 +49,6 @@ class Combat
       puts "Your attack was just wide"
       sleep(2)
     end
-    puts "careful its looking to attack"
-    sleep(2)
     enemy_turn
   end
 
@@ -78,12 +71,13 @@ class Combat
           else
             puts "You build up energy and realese it"
             sleep (2)
+            system("clear")
             @enemy.enemy_health_points -= spells[:dmg]
             monster_health
+            sleep(2)
             spells[:pp] -= 1
             spell_pp = true
             return if enemy_life == true
-            monster_health
           end
         elsif chosen_spell == "Exit"
           return
@@ -99,6 +93,8 @@ class Combat
 
   def enemy_life
     if @enemy.enemy_health_points <= 0 
+      system("clear")
+      monster_health
       puts "You won the fight"
       return true
     end
@@ -106,6 +102,8 @@ class Combat
 
   #enemy turn attack 
   def enemy_turn
+    puts "Its winding up"
+    sleep(2)
     if rand(1..20) + 2 <= 16  #player armor class       #random number between 1-20 and if its 16 or higher the attack hits 
       puts "You can't get out of the way fast enoguh"   
       @player.health_points -= @enemy.enemy_attack      #Players health minus the enemys damage 
@@ -114,6 +112,7 @@ class Combat
     end
     sleep(3)
     if @player.health_points <= 0  # If the players health is less then 0 end the game ends and you lose
+      do_health(@player.max_health_points,@player.health_points)
       puts "you died game over"
       exit! #exits the program
     end  
@@ -136,13 +135,18 @@ class Combat
     remainingDisplay = ' ' * remainingHealth             # Convert 12 to 12 spaces as a string: "            "
     percent = ((health/maxHealth)*100)      # Get the percent as a whole number:   40%
     puts ""
-    puts("          |" + healthDisplay + remainingDisplay + "|")  # Print out textbased healthbar
-    puts "                            #{percent}%"    
+    # return ("          |" + healthDisplay + remainingDisplay + "|") + percent  # Print out textbased healthbar
+    # puts "                            #{percent}%"    
+    return healthDisplay, remainingDisplay, percent
   end  
   
   #puts the healthbar and enemy image
   def monster_health
-    do_health(@enemy.enemy_max_health,@enemy.enemy_health_points)
     puts enemy_fight 
+    enemy_health, tes, enemy_percent = do_health(@enemy.enemy_max_health,@enemy.enemy_health_points)
+    player_health,tes2, player_percent = do_health(@player.max_health_points,@player.health_points)
+    puts  ("|" + player_health + tes2 + "|") + ("    \t\t\t\t\t      |" + enemy_health + tes + "|") 
+    puts "\t\t#{player_percent}% \t\t\t\t\t\t\t\t\t\t\t #{enemy_percent}% " 
+
   end
 end

@@ -3,6 +3,8 @@ require_relative 'character/weapon.rb'
 require_relative 'combat.rb'
 require_relative 'path.rb'
 require 'artii'
+require 'colorize'
+require 'tty-progressbar'
 
 class Character 
   attr_reader :name, :age 
@@ -20,6 +22,33 @@ class Character
     character
   end
 
+#Check to see if name has no numbers 
+def name_validator
+  puts "Whats your characters name"
+  name = gets.strip
+  until name[/\d/].nil? do          #uses regular expressions to see if the name has anything other then letters
+    puts "Your name must only have letters input again"
+    name = gets.strip
+  end
+  return name
+end
+
+#check to see if input age is a number 
+def age_validator
+  puts "whats your characters age" 
+  age = gets.strip.to_i 
+  until age > 16 #checks to see if name is a number 
+    begin 
+      if age >! 16
+      end
+    rescue  #rescues if there is an error because its not an integer 
+      puts "Input must be a valid number above 16, Try Again"
+      age = gets.strip.to_i
+    end
+  end
+  return age
+end
+
   #displays the game name and the created character
   def character
     system("clear")
@@ -35,38 +64,11 @@ class Character
       return chosen_weapon.water_weapons
     end
   end
-
-  #Check to see if name has no numbers 
-  def name_validator
-    puts "Whats your characters name"
-    name = gets.strip
-    until name[/\d/].nil? do          #uses regular expressions to see if the name has anything other then letters
-      puts "Your name must only have letters input again"
-      name = gets.strip
-    end
-    return name
-  end
-
-  #check to see if input age is a number 
-  def age_validator
-    puts "whats your characters age" 
-    age = gets.strip.to_i 
-    until age > 16 #checks to see if name is a number 
-      begin 
-        if age >! 16
-        end
-      rescue  #rescues if there is an error because its not an integer 
-        puts "Input must be a valid number above 16, Try Again"
-        age = gets.strip.to_i
-      end
-    end
-    return age
-  end
-  
 end
 
 #starts game 
 system ("clear")
+bar = TTY::ProgressBar.new("Level [:bar]", total: 10)
 a = Artii::Base.new :font => 'slant'
 puts a.asciify('Welcome to my game')
 
@@ -75,15 +77,22 @@ path = Path.new             #Sets up the path class for later use
 i = 1
 while i < 6 #Loops through 6 times each making the combat harder 
   Combat.new(player, i)           #Sends user to combat and the level they are on
-  path_choice = path.three_path   #After user selects a path it will random which way they go and return it
+  puts ""
+  puts a.asciify('Fight Won')
+  puts "Floor level"
+  2.times do 
+    bar.advance
+  end
+  puts ""
+  path_choice = path.three_path  #After user selects a path it will random which way they go and return it
+  puts ""
   if path_choice == 'combat' 
-    sleep(4)
-    puts "You follow your hear and follow the path"
+    puts "You follow your heart and follow the path"
     sleep(3)
     puts a.asciify('RRRRRRRRRRRRR')
-    sleep(5)
+    sleep(3)
   else
-    puts "You follow your hear and follow the path"
+    puts "You follow your heart and follow the path"
     sleep(3)
     puts "Oh whats this "
     path.treasure(player)       #player will get a random treasure room

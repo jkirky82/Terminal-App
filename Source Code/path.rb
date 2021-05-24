@@ -4,7 +4,7 @@ class Path
 
     def three_path
         @@prompt.select("What path do you choose", %w(Left Middle Right), max: 1)
-        return ['combat','combat','treasure'].sample
+        return ['combat','treasure','treasure'].sample
     end
 
     def treasure(player)
