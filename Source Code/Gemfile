@@ -11,5 +11,5 @@ gem 'pry-byebug'
 gem "tty-prompt"
 gem 'pry-nav'
 gem 'respec'
-gem 'verse', '~> 0.5.0'
+gem 'artii', '2.1'
 

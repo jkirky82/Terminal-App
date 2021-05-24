@@ -21,8 +21,7 @@ class Path
 
     def rest_place(player)
         puts "Take a rest wanderer"
-        puts player.health_points
-        puts "After resting you gained #{player.health_points + (player.health_points * 0.3)} health"
+        puts "After resting you gained #{(player.health_points * 0.3)} health"
         player.health_points += player.health_points * 0.3
         sleep(10)
     end

@@ -2,6 +2,7 @@ require_relative 'character/class.rb'
 require_relative 'character/weapon.rb'
 require_relative 'combat.rb'
 require_relative 'path.rb'
+require 'artii'
 
 class Character 
   attr_reader :name, :age 
@@ -20,7 +21,9 @@ class Character
 
   def character
     system("clear")
-    puts "You are #{@name}, aged #{@age} from the #{@class} tribe, rocking the #{@weapon[:name]}"
+    a = Artii::Base.new :font => 'slant'
+    puts a.asciify('Fantasy Final')
+    sleep(5)
     sleep(5)
   end
   def chose_weapon
@@ -58,8 +61,9 @@ class Character
   end
   
 end
-
-puts "Welcome to my game"
+system ("clear")
+a = Artii::Base.new :font => 'slant'
+puts a.asciify('Welcome to my game')
 player = Character.new
 path = Path.new
 i = 1
@@ -68,7 +72,14 @@ while i < 6
   path_choice = path.three_path
   puts path_choice
   if path_choice == 'combat'
+    sleep(4)
+    puts "You follow your hear and follow the path"
+    sleep(3)
+    puts a.asciify('RRRRRRRRRRRRR')
   else
+    puts "You follow your hear and follow the path"
+    sleep(3)
+    puts "Oh whats this "
     path.treasure(player)
   end
   i += 1
