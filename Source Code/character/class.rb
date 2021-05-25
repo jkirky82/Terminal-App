@@ -6,6 +6,9 @@ class Classes
   attr_reader :chosen_list, :class
   @@prompt = TTY::Prompt.new
     
+#Use tty table to list all the skills.
+
+
   #When class is called will prompt the user to select what class they would like.
   def initialize
     puts "what class would you like to be"
