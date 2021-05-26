@@ -37,7 +37,7 @@ end
 def age_validator
   puts "whats your characters age" 
   age = gets.strip.to_i 
-  until age > 16 #checks to see if name is a number 
+  until age > 16 #checks to see if age is a number 
     begin 
       if age >! 16
       end
