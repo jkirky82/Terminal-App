@@ -1,3 +1,5 @@
+$:.unshift File.dirname($0)
+
 require_relative 'character/class.rb'
 require_relative 'character/weapon.rb'
 require_relative 'combat.rb'

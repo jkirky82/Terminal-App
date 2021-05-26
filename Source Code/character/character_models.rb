@@ -115,4 +115,3 @@ def potion
   `.___.' 
   EOF
 end
-potion
