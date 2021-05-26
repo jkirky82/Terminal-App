@@ -1,4 +1,5 @@
 require "tty-prompt"
+require_relative 'character/character_models.rb'
 class Path
     @@prompt = TTY::Prompt.new
 
@@ -20,14 +21,19 @@ class Path
     end
 
     def rest_place(player)
+        campfire
         puts "Take a rest wanderer"
-        puts "After resting you gained #{(player.health_points * 0.3)} health"
+        sleep(5)
+        puts "After resting you gained #{(player.health_points * 0.4)} health"
         player.health_points += player.health_points * 0.3
         sleep(10)
     end
 
     def restor_pp(player)
-        puts "You find a weird berry, you eat it something odd happens"
+        potion
+        puts "You find a half drank potion, you drink it...."
+        sleep(5)
+        puts "something odd happens"
         chosen_spell = @@prompt.select("Select spell that youd like to restor energy too") do |menu|
             player.abilitys.each do |spells| 
               menu.choice spells[:title]

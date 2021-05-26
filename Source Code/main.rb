@@ -70,7 +70,7 @@ end
 system ("clear")
 bar = TTY::ProgressBar.new("Level [:bar]", total: 10)
 a = Artii::Base.new :font => 'slant'
-puts a.asciify('Welcome to my game')
+puts a.asciify('Welcome to my game').colorize(:red)
 
 player = Character.new      #Sends user to create a character
 path = Path.new             #Sets up the path class for later use
