@@ -21,12 +21,11 @@ class Combat
       system("clear")
       monster_health
       puts ""
-      case @@prompt.select("Your move, What will it be", %w(Attack Spells Potion), max: 1)    #User selects how they want to attack
+      case @@prompt.select("Your move, What will it be", %w(Attack Spells))    #User selects how they want to attack
       when 'Attack'
         attack
       when 'Spells'
         spells
-      when 'Potion'
       end
       system ("clear")
       monster_health
@@ -85,10 +84,6 @@ class Combat
       end
     end
     enemy_turn
-  end
-
-  #players potion options 
-  def potion 
   end
 
   def enemy_life

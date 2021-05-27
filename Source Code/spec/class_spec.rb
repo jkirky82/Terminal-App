@@ -1,14 +1,19 @@
-require_relative '../main.rb'
+
+require_relative '../path.rb'
+require_relative '../character/weapon.rb'
 
 
 
-describe "character customise" do 
-  character = Character.new('Jack', 18)
-  it "Input the characters name" do
-    expect(character.name).to eq('Jack')
+describe "Chosen Path" do 
+  path = Path.new
+  it "Random generates what path the player goes" do
+    expect(path.three_path).to eq('combat').or eq('treasure')
   end
+end
 
-  it "Input the characters age" do
-    expect(character.age).to be(18)
+describe "Character weapon selector" do 
+  weapon = Weapon.new
+  it "Player selects what weapon they would like" do
+    expect(weapon.water_weapons).to eq({:name => 'Bow', :dmg => 30}).or eq({:name => 'Spear', :dmg => 30})
   end
 end

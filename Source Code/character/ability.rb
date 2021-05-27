@@ -12,6 +12,23 @@ class Ability
         ability_list << {:title => i, :dmg => 0, :pp => 4, :pp_max => 4, :type => 'Water'}      #And the type for effectiveness
       elsif i == 'Tidal Wave'
         ability_list << {:title => i, :dmg => 150, :pp => 1, :pp_max => 1, :type => 'Water'}
+      elsif i == 'Tidal Wave'
+        ability_list << {:title => i, :dmg => 150, :pp => 1, :pp_max => 1, :type => 'Fire'}
+      elsif i == 'Tidal Wave'
+        ability_list << {:title => i, :dmg => 150, :pp => 1, :pp_max => 1, :type => 'Fire'}
+      elsif i == 'Tidal Wave'
+        ability_list << {:title => i, :dmg => 150, :pp => 1, :pp_max => 1, :type => 'Fire'}
+      elsif i == 'Tidal Wave'
+        ability_list << {:title => i, :dmg => 150, :pp => 1, :pp_max => 1, :type => 'Fire'}
+      elsif i == 'Tidal Wave'
+        ability_list << {:title => i, :dmg => 150, :pp => 1, :pp_max => 1, :type => 'Earth'}
+      elsif i == 'Tidal Wave'
+        ability_list << {:title => i, :dmg => 150, :pp => 1, :pp_max => 1, :type => 'Fire'}
+      elsif i == 'Tidal Wave'
+        ability_list << {:title => i, :dmg => 150, :pp => 1, :pp_max => 1, :type => 'Fire'}
+      elsif i == 'Tidal Wave'
+        ability_list << {:title => i, :dmg => 150, :pp => 1, :pp_max => 1, :type => 'Fire'}
+
       end 
     end
     return ability_list

@@ -17,7 +17,6 @@ class Character
     @age = age_validator
     class_ability = Classes.new
     @abilitys = class_ability.chosen_list
-    @class = class_ability.class
     @weapon = chose_weapon
     @max_health_points = 200
     @health_points = 200
