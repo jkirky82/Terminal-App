@@ -2,7 +2,7 @@
 
 # Installation
 
-To download the application you can either clone it or download to a zip file and extract into a loction of your choosing from my github Repo that you can find here https://github.com/jkirky82/Terminal-App.
+To download the application you can either clone it or download to a zip file and extract into a loction of your choosing from my github Repo that you can find [here](https://github.com/jkirky82/Terminal-App)
 
 To run the application youi will need to have ruby installed and the needed gem files. The gem should automaticly install on your computer from the gemfile that you will download from the Repo.
 
