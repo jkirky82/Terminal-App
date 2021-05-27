@@ -4,9 +4,19 @@
 
 To download the application you can either clone it or download to a zip file and extract into a loction of your choosing from my github Repo that you can find [here](https://github.com/jkirky82/Terminal-App)
 
-To run the application youi will need to have ruby installed and the needed gem files. The gem should automaticly install on your computer from the gemfile that you will download from the Repo.
+To run the application you will need to have ruby installed and the needed gem files. The gem should automaticly install on your computer from the gemfile that you will download from the Repo.
 
-To download and run the game after installing ruby, enter this command into your terminal to run the game "./run_app.sh". If any issues occur with the installed gems, all gems used can be found in the gemfile and respected versions. 
+After installing Ruby and cloning the Repo head to the file 
+
+Change to the directory that contains the repository.
+
+        cd {JackKirkwood}_T1A3/src
+
+Type this code into the terminal to start the application.
+
+        ./run_app.sh
+
+Once at this directory in the terminal run this command "./run_app.sh". If any issues occur with the installed gems, all gems used can be found in the gemfile and respected versions. 
 
 # Software Development Plan
 
@@ -63,12 +73,12 @@ When user has to type input ever input will have to be check that it is the corr
 
 # Trello
 
-![](photos/trello.PNG)
+![](docs/trello.PNG)
 
 # Diagrams
 
 These flow charts the 3 stated features and how they will flow
 
-![](Resources/Charactercreation.PNG)
-![](Resources/Combat.PNG)
-![](Resources/Paths.PNG)
+![](docs/Charactercreation.PNG)
+![](docs/Combat.PNG)
+![](docs/Paths.PNG)
