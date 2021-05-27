@@ -72,6 +72,7 @@ As said before the user will you predominantly use tty prompt for less user inpu
 When user has to type input ever input will have to be check that it is the correct datat type by putting it a number validation or a string validation. If the input is incorrect the user will be notted that it is incorrect and  will prompt for a re input of the number or string and whill continue this loop untill it has been inputed correctly.
 
 # Trello
+To view my Trello click [here](https://trello.com/b/PB8L5Wh6/website)
 
 ![](docs/trello.PNG)
 
