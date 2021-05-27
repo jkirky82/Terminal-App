@@ -69,6 +69,6 @@ When user has to type input ever input will have to be check that it is the corr
 
 These flow charts the 3 stated features and how they will flow
 
-![](photos/Charactercreation.PNG)
-![](photos/Combat.PNG)
-![](photos/Paths.PNG)
+![](Resources/Charactercreation.PNG)
+![](Resources/Combat.PNG)
+![](Resources/Paths.PNG)
