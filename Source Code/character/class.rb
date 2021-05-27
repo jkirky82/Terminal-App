@@ -38,12 +38,12 @@ class Classes
   end
 
   def fire
-    choices = %w(Wall\ of\ Water Splash Water\ Shield Tidal\ Wave)
+    choices = %w(Fire\ bolt Fire\ Wall Fire\ bomb Flame\ Fist)
     return @@prompt.multi_select("Select drinks?", choices, max: 3)
   end
 
   def earth
-    choices = %w(Wall\ of\ Water Splash Water\ Shield Tidal\ Wave)
+    choices = %w(Stone\ Wall Earthquake Tomb\ Stone Rock\ Smash)
     return answer = @@prompt.multi_select("Select drinks?", choices, max: 3)
   end
 end

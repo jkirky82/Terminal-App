@@ -49,12 +49,13 @@ class Path
 
     end
 
-    def special_item(player)
-        puts "A secret path has been found"
-        puts "After walking down the path for a while you hear a loud thumping sounds"
-        case @@prompt.select("Do you continue on?", %w(Yes No)) 
-        when 'Yes'
-        when 'No'
-        end
-    end
+    #Work in progress for an extra path
+    # def special_item(player)
+    #     puts "A secret path has been found"
+    #     puts "After walking down the path for a while you hear a loud thumping sounds"
+    #     case @@prompt.select("Do you continue on?", %w(Yes No)) 
+    #         when 'Yes'
+    #         when 'No'
+    #     end
+    # end
 end
